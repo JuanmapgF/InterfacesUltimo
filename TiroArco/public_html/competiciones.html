@@ -37,7 +37,7 @@ and open the template in the editor.
                     <a class="nav-link" href="competiciones.html">Competiciones</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-danger" href="#">Cerrar Sesión</a>
+                    <a class="nav-link text-danger" href="index.html" onclick="cerrar()">Cerrar Sesión</a>
                 </li>
             </ul>
         </nav>
@@ -106,11 +106,7 @@ and open the template in the editor.
                 </tbody>
             </table>
         </section>
-
-
-
         
-
         <script>
             function validate(num) {
                 if(((num === 1 || num === 5) && division !== 'Senior') ||  ( (num === 2 || num === 4) && division !== 'Juvenil') || ( (num === 3 || num === 6) && division !== 'Veterano') ) {
@@ -119,6 +115,9 @@ and open the template in the editor.
                     competicionesUsuario.prototype.push(["Trofeo Rector XVII","Senior","Arco olímpico", "20/3"]);
                     localStorage.setItem('competicionesUsuario',JSON.stringify(competicionesUsuario));
                 }
+            }
+            function cerrar() {
+                localStorage.clear();
             }
         </script>
         
