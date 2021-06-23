@@ -31,10 +31,10 @@ and open the template in the editor.
         <nav class="my-3">
             <ul class="nav justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Datos</a>
+                    <a class="nav-link" href="datos.html">Datos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Competiciones</a>
+                    <a class="nav-link" href="competiciones.html">Competiciones</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-danger" href="#">Cerrar Sesión</a>
@@ -67,7 +67,7 @@ and open the template in the editor.
                         <td>Arco olímpico</td>
                         <td>20/3</td>
                         <td>
-                            <form action="apuntarse.html" onsubmit="return validate()" method="post">
+                            <form action="trofeorector.html" onsubmit="return validate()" method="post">
                             <input type="submit" value="Participar">
                             </form>
                         </td>
@@ -77,35 +77,35 @@ and open the template in the editor.
                         <td>Juvenil</td>
                         <td>Arco desnudo</td>
                         <td>12/6</td>
-                        <th><a href="apuntarse.html"><button class="btn btn-sm btn-outline-primary">Participar</button></a></th>
+                        <th><a href="trofeorector.html"><button class="btn btn-sm btn-outline-primary">Participar</button></a></th>
                     </tr>
                     <tr>
                         <td>Torneo Mundial</td>
                         <td>Veterano</td>
                         <td>Arco longbow</td>
                         <td>20/3</td>
-                        <th><a href="apuntarse.html"><button class="btn btn-sm btn-outline-primary">Participar</button></a></th>
+                        <th><a href="trofeorector.html"><button class="btn btn-sm btn-outline-primary">Participar</button></a></th>
                     </tr>
                     <tr>
                         <td>Evento Ivanland</td>
                         <td>Juvenil</td>
                         <td>Arco instintivo</td>
                         <td>12/6</td>
-                        <th><a href="apuntarse.html"><button class="btn btn-sm btn-outline-primary">Participar</button></a></th>
+                        <th><a href="trofeorector.html"><button class="btn btn-sm btn-outline-primary">Participar</button></a></th>
                     </tr>
                     <tr>
                         <td>Desafío CuatroTV</td>
                         <td>Senior</td>
                         <td>Arco olímpico</td>
                         <td>12/6</td>
-                        <th><a href="apuntarse.html"><button class="btn btn-sm btn-outline-primary">Participar</button></a></th>
+                        <th><a href="trofeorector.html"><button class="btn btn-sm btn-outline-primary">Participar</button></a></th>
                     </tr>
                     <tr>
                         <td>Campeonato BTA</td>
                         <td>Veterano</td>
                         <td>Arco desnudo</td>
                         <td>20/3</td>
-                        <th><a href="apuntarse.html"><button class="btn btn-sm btn-outline-primary">Participar</button></a></th>
+                        <th><a href="trofeorector.html"><button class="btn btn-sm btn-outline-primary">Participar</button></a></th>
                     </tr>
                 </tbody>
             </table>
@@ -117,13 +117,13 @@ and open the template in the editor.
 
         <script>
             function validate() {
-                System.out.println("Hola");
                 if(!division.equals(competiciones[0][1])) {
                     alert("Error: No posees el rango necesario");
                     return false;
                 }
                 else {
-                    return confirm('¿Estás seguro de que quieres apuntarte?');
+                    competicionesUsuario.prototype.push(["Trofeo Rector XVII","Senior","Arco olímpico", "20/3"]);
+                    localStorage.setItem('competicionesUsuario',JSON.stringify(competicionesUsuario));
                 }
             }
         </script>

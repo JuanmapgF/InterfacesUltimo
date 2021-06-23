@@ -9,18 +9,60 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
         <script>
+            let nombre = localStorage.getItem('nombre');
+            let edad = localStorage.getItem('edad');
+            var competiciones = JSON.parse(localStorage.getItem('competiciones'));
             var competicionesUsuario = JSON.parse(localStorage.getItem('competicionesUsuario'));
+            let division;
+                if(edad >= 50){
+                    division = "Veterano";
+                }else if (edad >= 20){
+                    division = "Senior";
+                }else{
+                    division = "Juvenil";
+                }
         </script>
     </head>
-    <body>
-        <div>Mis resultados: </div>
-        <script>
+    <body class="bg-light bg-gradient">
+        
+        <nav class="my-3">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="datos.html">Datos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="competiciones.html">Competiciones</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="#">Cerrar Sesión</a>
+                </li>
+            </ul>
+        </nav>
+
+        <section class="container shadow-sm p-3 mb-5 bg-body rounded">
+            
+            <header>
+                <h1 class="display-1">Resultados:</h1>
+                <p class="mb-0 lead">Registrado como: <strong><script>document.write(nombre);</script></strong></p>
+                <p class="mb-0 lead">Edad: <strong><script>document.write(edad);</script></strong></p>
+                <hr/>
+            </header>
+            <script>
             for(var i=0;i<competicionesUsuario.length;i++){
                 document.write(competicionesUsuario[0]);
                 document.write(competicionesUsuario[1]);
                 document.write(competicionesUsuario[2]);
             }
-        </script>
+            </script>
+            
+            
+        </section>
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
     </body>
 </html>
