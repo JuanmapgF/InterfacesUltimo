@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Ranking</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <script>
+            let nombre = localStorage.getItem('nombre');
+            let puntuacion = localStorage.getItem('puntuacion');
+            var jugadores = ["Joseba de Carglas", "Alberto Luque", "Pepe Reina", "Gustavo la Rana", "Raul Gonzalez" , nombre];
+            var puntuaciones = [Math.floor(Math.random() * (600 - 0) + 0), Math.floor(Math.random() * (600 - 0) + 0), Math.floor(Math.random() * (600 - 0) + 0), Math.floor(Math.random() * (600 - 0) + 0), Math.floor(Math.random() * (600 - 0) + 0), puntuacion];
+            
+            var puntuaciones_ordenadas = puntuaciones.slice();
+            puntuaciones_ordenadas.sort(function(a, b){return b - a});
+            var clasificacion = [];
+            var value;
+            
+            for(i=0; i<jugadores.length;i++) {
+                clasificacion.push(puntuaciones.indexOf(puntuaciones_ordenadas[i]));
+            }
+            
+        </script>
+    </head>
+    <body class="bg-light bg-gradient">
+        
+        <nav class="my-3">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="datos.html">Datos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="competiciones.html">Competiciones</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="index.html" onclick="cerrar()">Cerrar Sesión</a>
+                </li>
+            </ul>
+        </nav>
+        
+        <section class="container shadow-sm p-3 mb-5 bg-body rounded">
+
+            <header>
+                <h1 class="display-1">Ranking:</h1>
+                <hr/>
+            </header>
+
+            <table class="table text-center mt-3">
+                <thead class="table-primary">
+                    <tr>
+                        <th>Puesto</th>
+                        <th>Nombre</th>
+                        <th>Puntuación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><script>document.write(jugadores[clasificacion[0]])</script></td>
+                        <td><script>document.write(puntuaciones[clasificacion[0]])</script></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><script>document.write(jugadores[clasificacion[1]])</script></td>
+                        <td><script>document.write(puntuaciones[clasificacion[1]])</script></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><script>document.write(jugadores[clasificacion[2]])</script></td>
+                        <td><script>document.write(puntuaciones[clasificacion[2]])</script></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><script>document.write(jugadores[clasificacion[3]])</script></td>
+                        <td><script>document.write(puntuaciones[clasificacion[3]])</script></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><script>document.write(jugadores[clasificacion[4]])</script></td>
+                        <td><script>document.write(puntuaciones[clasificacion[4]])</script></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><script>document.write(jugadores[clasificacion[5]])</script></td>
+                        <td><script>document.write(puntuaciones[clasificacion[5]])</script></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</html>
