@@ -26,12 +26,12 @@ and open the template in the editor.
         </script>
 
     </head>
-    <body class="bg-light bg-gradient">
+    <body class="bg-light bg-gradient" >
         
         <nav class="my-3">
             <ul class="nav justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link" href="datos.html">Datos</a>
+                    <a class="nav-link " href="datos.html">Datos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="competiciones.html">Competiciones</a>
@@ -42,7 +42,7 @@ and open the template in the editor.
             </ul>
         </nav>
 
-        <section class="container shadow-sm p-3 mb-5 bg-body rounded">
+        <section class="container shadow p-3 mb-5 bg-body rounded">
             
             <header>
                 <h1 class="display-1">Competiciones:</h1>
@@ -66,7 +66,7 @@ and open the template in the editor.
                         <td>Senior</td>
                         <td>Arco olímpico</td>
                         <td>20/3</td>
-                        <td><button onclick="validate(1)">Participar</button></td>
+                        <td><button name="btSenior" onclick="validate(1)" >Participar</button></td>
                     </tr>
                     <tr>
                         <td>Campeonato Paralenkítico</td>
@@ -94,7 +94,7 @@ and open the template in the editor.
                         <td>Senior</td>
                         <td>Arco olímpico</td>
                         <td>12/6</td>
-                        <td><button onclick="validate(5)">Participar</button></td>
+                        <td><button name="btSenior" onclick="validate(5)" >Participar</button></td>
                     </tr>
                     <tr>
                         <td>Campeonato BTA</td>
@@ -115,9 +115,24 @@ and open the template in the editor.
                     competicionesUsuario.prototype.push(["Trofeo Rector XVII","Senior","Arco olímpico", "20/3"]);
                     localStorage.setItem('competicionesUsuario',JSON.stringify(competicionesUsuario));
                 }
+                
+                
             }
             function cerrar() {
                 localStorage.clear();
+            }
+            
+            window.onload=function disabled(){
+                if(division !== 'Senior'){
+                   document.getElementById('btSenior').disabled = true;
+                }else if (division !== 'Veterano'){
+                    
+                
+                }else if (division !== 'Juvenil'){
+                    
+                }else if(division !== 'Veterano'){
+                    
+                }
             }
         </script>
         
