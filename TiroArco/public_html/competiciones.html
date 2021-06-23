@@ -14,85 +14,101 @@ and open the template in the editor.
         <script>let edad = localStorage.getItem('edad');</script>
         <script>
             let division;
-                if(edad >= 50){
-                    division = "Veterano";
-                }else if (edad >= 20){
-                    division = "Senior";
-                }else{
-                    division = "Juvenil";
-                }
-            
+            if (edad >= 50) {
+                division = "Veterano";
+            } else if (edad >= 20) {
+                division = "Senior";
+            } else {
+                division = "Juvenil";
+            }
+
         </script>
-        
+
     </head>
-    <body>
+    <body class="bg-light bg-gradient">
         
-        <div class="container">
-            <p>Nombre: <script>document.write(nombre);</script></p>
-            <p>División: <script>document.write(division);</script></p>
-        </div>
-        
-        <h1>Competiciones:</h1>
-        
-        <table border="1" class="table text-center">
-            <thead>
-                <tr>
-                    <th>NOMBRE</th>
-                    <th>DIVISIÓN</th>
-                    <th>MODALIDAD</th>
-                    <th>RONDAS/FLECHAS</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Trofeo Rector XVII</td>
-                    <td>Senior</td>
-                    <td>Arco olímpico</td>
-                    <td>20/3</td>
-                    <th><a href="apuntarse.html"><button>Participar</button></a></th>
-                </tr>
-                <tr>
-                    <td>Campeonato Paralenkítico</td>
-                    <td>Juvenil</td>
-                    <td>Arco desnudo</td>
-                    <td>12/6</td>
-                    <th><a href="apuntarse.html"><button>Participar</button></a></th>
-                </tr>
-                <tr>
-                    <td>Torneo Mundial</td>
-                    <td>Veterano</td>
-                    <td>Arco longbow</td>
-                    <td>20/3</td>
-                    <th><a href="apuntarse.html"><button>Participar</button></a></th>
-                </tr>
-                <tr>
-                    <td>Evento Ivanland</td>
-                    <td>Juvenil</td>
-                    <td>Arco instintivo</td>
-                    <td>12/6</td>
-                    <th><a href="apuntarse.html"><button>Participar</button></a></th>
-                </tr>
-                <tr>
-                    <td>Desafío CuatroTV</td>
-                    <td>Senior</td>
-                    <td>Arco olímpico</td>
-                    <td>12/6</td>
-                    <th><a href="apuntarse.html"><button>Participar</button></a></th>
-                </tr>
-                <tr>
-                    <td>Campeonato BTA</td>
-                    <td>Veterano</td>
-                    <td>Arco desnudo</td>
-                    <td>20/3</td>
-                    <th><a href="apuntarse.html"><button>Participar</button></a></th>
-                </tr>
-            </tbody>
-        </table>
-        
-        
-        
+        <nav class="my-3">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Datos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Competiciones</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="#">Cerrar Sesión</a>
+                </li>
+            </ul>
+        </nav>
+
+        <section class="container shadow-sm p-3 mb-5 bg-body rounded">
+            
+            <header>
+                <h1 class="display-1">Competiciones:</h1>
+                <p class="mb-0 lead">Perteneces a la división: <strong><script>document.write(division);</script></strong></p>
+                <hr/>
+            </header>
+            
+            <table class="table text-center mt-3">
+                <thead class="table-primary">
+                    <tr>
+                        <th>NOMBRE</th>
+                        <th>DIVISIÓN</th>
+                        <th>MODALIDAD</th>
+                        <th>RONDAS/FLECHAS</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Trofeo Rector XVII</td>
+                        <td>Senior</td>
+                        <td>Arco olímpico</td>
+                        <td>20/3</td>
+                        <th><a href="apuntarse.html"><button class="btn btn-sm btn-outline-primary">Participar</button></a></th>
+                    </tr>
+                    <tr>
+                        <td>Campeonato Paralenkítico</td>
+                        <td>Juvenil</td>
+                        <td>Arco desnudo</td>
+                        <td>12/6</td>
+                        <th><a href="apuntarse.html"><button class="btn btn-sm btn-outline-primary">Participar</button></a></th>
+                    </tr>
+                    <tr>
+                        <td>Torneo Mundial</td>
+                        <td>Veterano</td>
+                        <td>Arco longbow</td>
+                        <td>20/3</td>
+                        <th><a href="apuntarse.html"><button class="btn btn-sm btn-outline-primary">Participar</button></a></th>
+                    </tr>
+                    <tr>
+                        <td>Evento Ivanland</td>
+                        <td>Juvenil</td>
+                        <td>Arco instintivo</td>
+                        <td>12/6</td>
+                        <th><a href="apuntarse.html"><button class="btn btn-sm btn-outline-primary">Participar</button></a></th>
+                    </tr>
+                    <tr>
+                        <td>Desafío CuatroTV</td>
+                        <td>Senior</td>
+                        <td>Arco olímpico</td>
+                        <td>12/6</td>
+                        <th><a href="apuntarse.html"><button class="btn btn-sm btn-outline-primary">Participar</button></a></th>
+                    </tr>
+                    <tr>
+                        <td>Campeonato BTA</td>
+                        <td>Veterano</td>
+                        <td>Arco desnudo</td>
+                        <td>20/3</td>
+                        <th><a href="apuntarse.html"><button class="btn btn-sm btn-outline-primary">Participar</button></a></th>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-    
+
     </body>
 </html>
