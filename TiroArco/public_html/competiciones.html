@@ -66,46 +66,42 @@ and open the template in the editor.
                         <td>Senior</td>
                         <td>Arco olímpico</td>
                         <td>20/3</td>
-                        <td>
-                            <form action="apuntarse.html" onsubmit="return validate()" method="post">
-                            <input type="submit" value="Participar">
-                            </form>
-                        </td>
+                        <td><button onclick="validate(1)">Participar</button></td>
                     </tr>
                     <tr>
                         <td>Campeonato Paralenkítico</td>
                         <td>Juvenil</td>
                         <td>Arco desnudo</td>
                         <td>12/6</td>
-                        <th><a href="apuntarse.html"><button class="btn btn-sm btn-outline-primary">Participar</button></a></th>
+                        <td><button onclick="validate(2)">Participar</button></td>
                     </tr>
                     <tr>
                         <td>Torneo Mundial</td>
                         <td>Veterano</td>
                         <td>Arco longbow</td>
                         <td>20/3</td>
-                        <th><a href="apuntarse.html"><button class="btn btn-sm btn-outline-primary">Participar</button></a></th>
+                        <td><button onclick="validate(3)">Participar</button></td>
                     </tr>
                     <tr>
                         <td>Evento Ivanland</td>
                         <td>Juvenil</td>
                         <td>Arco instintivo</td>
                         <td>12/6</td>
-                        <th><a href="apuntarse.html"><button class="btn btn-sm btn-outline-primary">Participar</button></a></th>
+                        <td><button onclick="validate(4)">Participar</button></td>
                     </tr>
                     <tr>
                         <td>Desafío CuatroTV</td>
                         <td>Senior</td>
                         <td>Arco olímpico</td>
                         <td>12/6</td>
-                        <th><a href="apuntarse.html"><button class="btn btn-sm btn-outline-primary">Participar</button></a></th>
+                        <td><button onclick="validate(5)">Participar</button></td>
                     </tr>
                     <tr>
                         <td>Campeonato BTA</td>
                         <td>Veterano</td>
                         <td>Arco desnudo</td>
                         <td>20/3</td>
-                        <th><a href="apuntarse.html"><button class="btn btn-sm btn-outline-primary">Participar</button></a></th>
+                        <td><button onclick="validate(6)">Participar</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -113,20 +109,18 @@ and open the template in the editor.
 
 
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+        
 
         <script>
-            function validate() {
-                System.out.println("Hola");
-                if(!division.equals(competiciones[0][1])) {
-                    alert("Error: No posees el rango necesario");
-                    return false;
-                }
-                else {
-                    return confirm('¿Estás seguro de que quieres apuntarte?');
+            function validate(num) {
+                if(((num === 1 || num === 5) && division !== 'Senior') ||  ( (num === 2 || num === 4) && division !== 'Juvenil') || ( (num === 3 || num === 6) && division !== 'Veterano') ) {
+                   alert("No pertenece a dicha categoria");
+                } else {
+                    
                 }
             }
         </script>
-
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     </body>
 </html>
