@@ -10,18 +10,18 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-        <script>let nombre = localStorage.getItem('nombre');</script>
-        <script>let edad = localStorage.getItem('edad');</script>
         <script>
+            let nombre = localStorage.getItem('nombre');
+            let edad = localStorage.getItem('edad');
+            let competiciones = JSON.parse(localStorage.getItem('competiciones'));
             let division;
-            if (edad >= 50) {
-                division = "Veterano";
-            } else if (edad >= 20) {
-                division = "Senior";
-            } else {
-                division = "Juvenil";
-            }
-
+                if(edad >= 50){
+                    division = "Veterano";
+                }else if (edad >= 20){
+                    division = "Senior";
+                }else{
+                    division = "Juvenil";
+                }
         </script>
 
     </head>
