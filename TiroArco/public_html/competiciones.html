@@ -31,10 +31,10 @@ and open the template in the editor.
         <nav class="my-3">
             <ul class="nav justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Datos</a>
+                    <a class="nav-link" href="datos.html">Datos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Competiciones</a>
+                    <a class="nav-link" href="competiciones.html">Competiciones</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-danger" href="#">Cerrar Sesión</a>
@@ -116,7 +116,8 @@ and open the template in the editor.
                 if(((num === 1 || num === 5) && division !== 'Senior') ||  ( (num === 2 || num === 4) && division !== 'Juvenil') || ( (num === 3 || num === 6) && division !== 'Veterano') ) {
                    alert("No pertenece a dicha categoria");
                 } else {
-                    
+                    competicionesUsuario.prototype.push(["Trofeo Rector XVII","Senior","Arco olímpico", "20/3"]);
+                    localStorage.setItem('competicionesUsuario',JSON.stringify(competicionesUsuario));
                 }
             }
         </script>
