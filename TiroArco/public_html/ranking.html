@@ -12,6 +12,9 @@ and open the template in the editor.
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
         <script>
             let nombre = localStorage.getItem('nombre');
+            if (nombre === null) {
+                location.href = 'index.html';
+            }
             let puntuacion = localStorage.getItem('puntuacion');
             var jugadores = ["Joseba de Carglas", "Alberto Luque", "Pepe Reina", "Gustavo la Rana", "Raul Gonzalez" , nombre];
             var puntuaciones = [Math.floor(Math.random() * (600 - 0) + 0), Math.floor(Math.random() * (600 - 0) + 0), Math.floor(Math.random() * (600 - 0) + 0), Math.floor(Math.random() * (600 - 0) + 0), Math.floor(Math.random() * (600 - 0) + 0), puntuacion];

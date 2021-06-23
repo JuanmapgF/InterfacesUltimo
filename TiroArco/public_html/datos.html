@@ -16,6 +16,9 @@ and open the template in the editor.
             var competiciones = JSON.parse(localStorage.getItem('competiciones'));
             var competicionesUsuario = JSON.parse(localStorage.getItem('competicionesUsuario'));
             let division;
+            if (nombre === null || edad === null) {
+                location.href = 'index.html';
+            }
                 if(edad >= 50){
                     division = "Veterano";
                 }else if (edad >= 20){
