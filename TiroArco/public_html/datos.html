@@ -9,8 +9,18 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            var competicionesUsuario = JSON.parse(localStorage.getItem('competicionesUsuario'));
+        </script>
     </head>
     <body>
-        <div>TODO write content</div>
+        <div>Mis resultados: </div>
+        <script>
+            for(var i=0;i<competicionesUsuario.length;i++){
+                document.write(competicionesUsuario[0]);
+                document.write(competicionesUsuario[1]);
+                document.write(competicionesUsuario[2]);
+            }
+        </script>
     </body>
 </html>
