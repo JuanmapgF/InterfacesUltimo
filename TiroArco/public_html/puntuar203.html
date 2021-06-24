@@ -51,9 +51,19 @@ and open the template in the editor.
             {
                 display:none;
             }
+            .crono_wrapper {
+                text-align:center;
+                width:200px;
+            }
+            #p1 {
+                width: 1500%;
+            }
+            #oro {
+                width: 1500%;
+            }
         </style>
     </head>
-    <body class="bg-light bg-gradient">
+    <body class="bg-light bg-gradient" onload="cronometro();">
 
         <nav class="mt-3">
             <ul class="nav justify-content-center">
@@ -92,77 +102,126 @@ and open the template in the editor.
                 <tbody>
                     <tr>
                         <td> <input type="number" class="form-control" id="r1" min="0" max="10" maxlength="2" disabled=""></td>
-                        <td> <input type="number" class="form-control" id="r1f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r1f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r1f3" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r1f1" min="0" max="10" maxlength="2" required="" onkeyup="comprobarValor(1)"> </td>
+                        <td> <input type="number" class="form-control" id="r1f2" min="0" max="10" maxlength="2" required="" onkeyup="comprobarValor(2)"> </td>
+                        <td> <input type="number" class="form-control" id="r1f3" min="0" max="10" maxlength="2" required="" onkeyup="comprobarValor(3)"> </td>
                         <td><button id="bt1" onclick="sumar()" >Continuar</button></td>
                     </tr>
 
                 </tbody>
             </table>
-            <p class="mb-0 lead">Puntuación: <div class="col-md-1"><input type="number" class="form-control" id="p1" min="0"  max="10" maxlength="2" disabled=""></div></p> 
-        <p class="mb-0 lead">Oros: <div class="col-md-1"><input type="number" class="form-control" id="oro" min="0"  max="10" maxlength="2" disabled=""></div></p>  
+            <div class="row"> 
+                <div class="col-md-auto">
+                    <p class="mb-0 lead">Puntuación: <div class="col-md-1"><input type="number" class="form-control" id="p1" min="0"  max="10" maxlength="2" disabled=""></div></p> 
+                    <p class="mb-0 lead">Oros: <div class="col-md-1"><input type="number" class="form-control" id="oro" min="0"  max="10" maxlength="2" disabled=""></div></p>  
+                </div>
 
-    <div class="container text-center">
-        <button id="boton" type="submit" class="btn btn-primary mb-3 hideme" onclick="sumar()"> Guardar puntuación </button>
-    </div>
-</section>
+                <div class="col-md-auto mb-0 lead crono_wrapper mx-auto">
+                    <h2 id='crono'>03:00</h2>
+                </div>
 
-<script>
-    // Si se llama a esto crea la tabla anterior con el <table id="tablaPuntuaciones"> ... </table>
-    document.getElementById('p1').value = puntuacion;
-    document.getElementById('r1').value = ronda;
-    //disparos a los circulos amarillos
-    let oro = 0;
 
-    // Pasa por todos los inputs y recoge la puntuación
-    // Hay que guardar las puntuaciones de cada flecha separadas
-    function sumar() {
-        if (ronda <= 20) {
-            for (var f = 1; f <= 3; f++) {
-                var valor = document.getElementById('r1' + 'f' + f).value;
-                if (valor === null || valor === 'X' || valor === 'x') {
-                    valor = 0;
+                <div class="container text-center">
+                    <button id="boton" type="submit" class="btn btn-primary mb-3 hideme" onclick="sumar()"> Guardar puntuación </button>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            // Cronómetro
+            var minutos = 3;
+            var segundos = 1;
+            var crono = true;
+
+            // Si se llama a esto crea la tabla anterior con el <table id="tablaPuntuaciones"> ... </table>
+            document.getElementById('p1').value = puntuacion;
+            document.getElementById('r1').value = ronda;
+
+            //disparos a los circulos amarillos
+            let oro = 0;
+
+            // Pasa por todos los inputs y recoge la puntuación
+            // Hay que guardar las puntuaciones de cada flecha separadas
+            function sumar() {
+                if (ronda <= 20) {
+                    minutos = 3;
+                    segundos = 1;
+                    for (var f = 1; f <= 3; f++) {
+                        var valor = document.getElementById('r1' + 'f' + f).value;
+                        if (valor === null || valor === 'X' || valor === 'x') {
+                            valor = 0;
+                        }
+                        if (valor === '9' || valor === '10') {
+                            oro += 1;
+                        }
+                        var valorNumerico = new Number(valor);
+                        if (valorNumerico > 10) {
+                            valorNumerico = 0;
+                        }
+                        puntuacion += valorNumerico;
+                    }
+                    ronda += 1;
+                    if (ronda > 20) {
+                        location.href = 'ranking.html';
+                        localStorage.setItem('puntuacion', puntuacion);
+                        localStorage.setItem('oros', oro);
+                    }
+                    if (ronda + 1 > 20) {
+                        document.getElementById('boton').style.display = "inline";
+                        document.getElementById('bt1').style.visibility = "hidden";
+                    }
+                    document.getElementById('r1f1').value = "";
+                    document.getElementById('r1f2').value = "";
+                    document.getElementById('r1f3').value = "";
+                    document.getElementById('r1').value = ronda;
+                    document.getElementById('p1').value = puntuacion;
+                    document.getElementById('oro').value = oro;
+                } else {
+                    crono = false;
                 }
-                if (valor === '9' || valor === '10') {
-                    oro += 1;
-                }
-                var valorNumerico = new Number(valor);
-                if (valorNumerico > 10) {
-                    valorNumerico = 0;
-                }
-                puntuacion += valorNumerico;
             }
-            ronda += 1;
-            if (ronda > 20) {
+
+            function comprobarValor(num) {
+                var valor = document.getElementById('r1f' + num).value;
+                if (valor > 10 || valor < 0) {
+                    alert("El valor de la flecha debe estar entre 0 y 10");
+                    document.getElementById('r1f' + num).value = 0;
+                }
+            }
+
+            function calcularPuntuacion(puntuacion) {
+                localStorage.setItem('participarEn', null);
                 location.href = 'ranking.html';
                 localStorage.setItem('puntuacion', puntuacion);
-                localStorage.setItem('oros', oro);
             }
-            if (ronda + 1 > 20) {
-                document.getElementById('boton').style.display = "inline";
-                document.getElementById('bt1').style.visibility = "hidden";
+
+            async function cronometro() {
+                if (crono) {
+                    if (segundos === 0) {
+                        segundos = 59;
+                        if (minutos === 0 && ronda <= 20) {
+                            alert("Se le ha acabado el tiempo, pinche en Continuar para pasar a la siguiente ronda");
+                        } else {
+                            minutos--;
+                        }
+                    } else {
+                        segundos--;
+                    }
+
+                    var result = (minutos < 10 ? "0" : "") + minutos + ":" + (segundos < 10 ? "0" : "") + segundos;
+
+                    document.getElementById('crono').innerHTML = result;
+
+                    // Se vuelve a ejecutar la función en 1 segundo
+                    timeout = setTimeout("cronometro()", 1000);
+                }
             }
-            document.getElementById('r1f1').value = "";
-            document.getElementById('r1f2').value = "";
-            document.getElementById('r1f3').value = "";
-            document.getElementById('r1').value = ronda;
-            document.getElementById('p1').value = puntuacion;
-            document.getElementById('oro').value = oro;
-        }
-    }
 
-    function calcularPuntuacion(puntuacion) {
-        localStorage.setItem('participarEn', null);
-        location.href = 'ranking.html';
-        localStorage.setItem('puntuacion', puntuacion);
-    }
-
-    function cerrar() {
-        localStorage.clear();
-    }
-</script>        
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" 
-integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-</body>
+            function cerrar() {
+                localStorage.clear();
+            }
+        </script>        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    </body>
 </html>
