@@ -110,7 +110,9 @@ and open the template in the editor.
                     
                 </tbody>
             </table>
-            <p class="mb-0 lead"> Puntuación: <div class="col-md-1"><input type="number" class="form-control" id="p1" min="0"  max="10" maxlength="2" disabled=""></div> </p>
+            <p class="mb-0 lead">Puntuación: <div class="col-md-1"><input type="number" class="form-control" id="p1" min="0"  max="10" maxlength="2" disabled=""></div></p>  
+            <p class="mb-0 lead">Oros: <div class="col-md-1"><input type="number" class="form-control" id="oro" min="0"  max="10" maxlength="2" disabled=""></div></p>  
+            
             <div class="container text-center">
                 <button id="boton" type="submit" class="btn btn-primary mb-3 hideme" onclick="sumar()"> Guardar puntuación </button>
             </div>
@@ -120,6 +122,8 @@ and open the template in the editor.
             // Si se llama a esto crea la tabla anterior con el <table id="tablaPuntuaciones"> ... </table>
             document.getElementById('p1').value =puntuacion;
             document.getElementById('r1').value =ronda;
+            //disparos a los circulos amarillos
+            let oro = 0;
             
             function creatTabla(rondas, flechas) {
                 var table = document.getElementById("tablaPuntuaciones");
@@ -145,12 +149,17 @@ and open the template in the editor.
                         if (valor === null || valor === 'X' || valor === 'x') {
                             valor = 0;
                         }
+                        if (valor === '9' || valor === '10'){
+                            oro += 1;
+                        }
+                        
                     puntuacion += new Number(valor);
                     }
                     ronda += 1;
                     if(ronda > 12){
                         location.href = 'ranking.html';
                         localStorage.setItem('puntuacion', puntuacion); 
+                        localStorage.setItem('oros',oro);
                     }
                     if(ronda+1 >12){
                         document.getElementById('boton').style.display="inline";
@@ -164,6 +173,7 @@ and open the template in the editor.
                     document.getElementById('r1f6').value="";
                     document.getElementById('r1').value =ronda;
                     document.getElementById('p1').value =puntuacion;   
+                    document.getElementById('oro').value =oro;
                 }
             }
             
@@ -172,6 +182,7 @@ and open the template in the editor.
                 localStorage.setItem('participarEn', null);
                 location.href = 'ranking.html';
                 localStorage.setItem('puntuacion', puntuacion);
+                
             }
 
             function cerrar() {

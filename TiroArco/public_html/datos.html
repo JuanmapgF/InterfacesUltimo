@@ -59,6 +59,7 @@ and open the template in the editor.
                     <tr>
                         <th>Competición</th>
                         <th>Posición</th>
+                        <th>Oros</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -76,6 +77,9 @@ and open the template in the editor.
                             document.write("</svg>");
                             
                         }
+                        document.write("</td>");
+                        document.write("<td>");
+                        document.write(competicionesUsuario[i][2]);
                         document.write("</td>");
                         document.write("</tr>");
                     }
