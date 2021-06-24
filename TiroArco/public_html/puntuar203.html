@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title id="title"> Puntuar </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <script>
+            let nombre = localStorage.getItem('nombre');
+            let edad = localStorage.getItem('edad');
+            let competiciones = JSON.parse(localStorage.getItem('competiciones'));
+            let division;
+            if (nombre === null || edad === null) {
+                location.href = 'index.html';
+            }
+            if (edad >= 50) {
+                division = "Veterano";
+            } else if (edad >= 20) {
+                division = "Senior";
+            } else {
+                division = "Juvenil";
+            }
+
+            let competicionActual = '';
+            var titulo = document.getElementById("title");
+            switch (localStorage.getItem('participar')) {
+                case '1':
+                    competicionActual = 'Trofeo Rector';
+                    break;
+                case '3':
+                    competicionActual = 'Torneo Mundial';
+                    break;
+                case '6':
+                    competicionActual = 'Campeonato BTA';
+                    break;
+                default:
+                    location.href = 'competiciones.html';
+                    break;
+            }
+            titulo.text = competicionActual;
+        </script>
+    </head>
+    <body class="bg-light bg-gradient">
+
+        <nav class="mt-3">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="datos.html">Datos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="competiciones.html">Competiciones</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="index.html" onclick="cerrar()">Cerrar Sesión</a>
+                </li>
+            </ul>
+        </nav>
+
+        <section class="container shadow p-3 mb-5 bg-body rounded">
+
+            <header>
+                <h1 class="display-1"> <script>document.write(competicionActual);</script> </h1>
+                <p class="mb-0 lead"> División: <strong><script>document.write(division);</script></strong></p>
+                <hr/>
+            </header>
+
+            <div>Apuntar puntuación de cada disparo</div>
+
+            <table class="table table-striped center scroll" id="tablaPuntuaciones" cellpadding="6" border="2" align="center">
+                <thead> 
+                    <tr> 
+                        <th> Ronda </th> 
+                        <th> Flecha 1 </th>  
+                        <th> Flecha 2 </th> 
+                        <th> Flecha 3 </th>  </tr> 
+                </thead> 
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td> <input type="number" class="form-control" id="r1f1" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r1f2" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r1f3" min="0" max="10" maxlength="2" required=""> </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td> <input type="number" class="form-control" id="r2f1" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r2f2" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r2f3" min="0" max="10" maxlength="2" required=""> </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td> <input type="number" class="form-control" id="r3f1" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r3f2" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r3f3" min="0" max="10" maxlength="2" required=""> </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td> <input type="number" class="form-control" id="r4f1" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r4f2" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r4f3" min="0" max="10" maxlength="2" required=""> </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td> <input type="number" class="form-control" id="r5f1" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r5f2" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r5f3" min="0" max="10" maxlength="2" required=""> </td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td> <input type="number" class="form-control" id="r6f1" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r6f2" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r6f3" min="0" max="10" maxlength="2" required=""> </td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td> <input type="number" class="form-control" id="r7f1" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r7f2" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r7f3" min="0" max="10" maxlength="2" required=""> </td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td> <input type="number" class="form-control" id="r8f1" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r8f2" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r8f3" min="0" max="10" maxlength="2" required=""> </td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td> <input type="number" class="form-control" id="r9f1" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r9f2" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r9f3" min="0" max="10" maxlength="2" required=""> </td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td> <input type="number" class="form-control" id="r10f1" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r10f2" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r10f3" min="0" max="10" maxlength="2" required=""> </td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td> <input type="number" class="form-control" id="r11f1" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r11f2" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r11f3" min="0" max="10" maxlength="2" required=""> </td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td> <input type="number" class="form-control" id="r12f1" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r12f2" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r12f3" min="0" max="10" maxlength="2" required=""> </td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td> <input type="number" class="form-control" id="r13f1" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r13f2" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r13f3" min="0" max="10" maxlength="2" required=""> </td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td> <input type="number" class="form-control" id="r14f1" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r14f2" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r14f3" min="0" max="10" maxlength="2" required=""> </td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td> <input type="number" class="form-control" id="r15f1" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r15f2" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r15f3" min="0" max="10" maxlength="2" required=""> </td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td> <input type="number" class="form-control" id="r16f1" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r16f2" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r16f3" min="0" max="10" maxlength="2" required=""> </td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td> <input type="number" class="form-control" id="r17f1" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r17f2" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r17f3" min="0" max="10" maxlength="2" required=""> </td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td> <input type="number" class="form-control" id="r18f1" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r18f2" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r18f3" min="0" max="10" maxlength="2" required=""> </td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td> <input type="number" class="form-control" id="r19f1" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r19f2" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r19f3" min="0" max="10" maxlength="2" required=""> </td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td> <input type="number" class="form-control" id="r20f1" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r20f2" min="0" max="10" maxlength="2" required=""> </td>
+                        <td> <input type="number" class="form-control" id="r20f3" min="0" max="10" maxlength="2" required=""> </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="container text-center">
+                <button type="submit" class="btn btn-primary mb-3" onclick="guardarPuntuacion(20, 3)"> Guardar puntuación </button>
+            </div>
+        </section>
+
+        <script>
+            // Si se llama a esto crea la tabla anterior con el <table id="tablaPuntuaciones"> ... </table>
+            function creatTabla(rondas, flechas) {
+                var table = document.getElementById("tablaPuntuaciones");
+                table.innerHTML += "<thead> <tr> <th> Ronda </th> <th> Flecha 1 </th>  <th> Flecha 2 </th> <th> Flecha 3 </th>  </tr> </thead> <tbody>";
+                for (var r = 1; r <= rondas; r++)
+                {
+                    var fila = "<tr><td>" + r + "</td>";
+                    for (var f = 1; f <= flechas; f++) {
+                        fila += "<td> <input type=\"text\" class=\"form-control\" id=\"r" + r + "f" + f + "\" required=\"\">";
+                    }
+                    table.innerHTML += fila + "<tr> <br/>";
+                }
+                table.innerHTML += "</tbody>";
+            }
+
+            // Pasa por todos los inputs y recoge la puntuación
+            // Hay que guardar las puntuaciones de cada flecha separadas
+            function guardarPuntuacion(rondas, flechas) { 
+                var puntuacion = new Number('0');
+                for (var r = 1; r <= rondas; r++)
+                {
+                    for (var f = 1; f <= flechas; f++) {
+                        var valor = document.getElementById('r' + r + 'f' + f).value;
+                        if (valor === null || valor === 'X' || valor === 'x') {
+                            valor = 0;
+                        }
+                        puntuacion += new Number(valor);
+                    }
+                }
+                location.href = 'ranking.html';
+                localStorage.setItem('puntuacion', puntuacion);
+                
+            }
+
+            function calcularPuntuacion(puntuacion) {
+                localStorage.setItem('participarEn', null);
+                location.href = 'ranking.html';
+                localStorage.setItem('puntuacion', puntuacion);
+            }
+
+            function cerrar() {
+                localStorage.clear();
+            }
+        </script>        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    </body>
+</html>

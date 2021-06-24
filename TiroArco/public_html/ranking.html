@@ -11,6 +11,33 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
         <script>
+            let competicionActual = '';
+            switch (localStorage.getItem('participar')) {
+                case '1':
+                    competicionActual = 'Trofeo Rector';
+                    break;
+                case '2':
+                    competicionActual = 'Campeonato Paralenkítico';
+                    break;
+                case '3':
+                    competicionActual = 'Torneo Mundial';
+                    break;
+                case '4':
+                    competicionActual = 'Evento Ivanland';
+                    break;
+                case '5':
+                    competicionActual = 'Desafío CuatroTV';
+                    break;
+                case '6':
+                    competicionActual = 'Campeonato BTA';
+                    break;
+                default:
+                    location.href = 'competiciones.html';
+                    break;
+            }
+            
+            var competicionesUsuario = JSON.parse(localStorage.getItem('competicionesUsuario'));
+      
             let nombre = localStorage.getItem('nombre');
             if (nombre === null) {
                 location.href = 'index.html';
@@ -24,9 +51,19 @@ and open the template in the editor.
             var clasificacion = [];
             var value;
             
+            var competicionesUsuario = JSON.parse(localStorage.getItem('competicionesUsuario'));
+            
             for(i=0; i<jugadores.length;i++) {
                 clasificacion.push(puntuaciones.indexOf(puntuaciones_ordenadas[i]));
+                if(i === jugadores.length-1){
+                    competicionesUsuario.push([competicionActual,puntuaciones.indexOf(puntuaciones_ordenadas[i])+1]);
+                    localStorage.removeItem('competicionesUsuario');
+                    localStorage.setItem('competicionesUsuario',JSON.stringify(competicionesUsuario));
+                }
             }
+            
+            
+            
             
         </script>
     </head>
@@ -49,7 +86,7 @@ and open the template in the editor.
         <section class="container shadow p-3 mb-5 bg-body rounded">
 
             <header>
-                <h1 class="display-1">Ranking:</h1>
+                <h1 class="display-1">Ranking de <script>document.write(competicionActual)</script>:</h1>
                 <hr/>
             </header>
 
