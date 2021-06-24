@@ -59,7 +59,7 @@ and open the template in the editor.
             }
             for(j=0; j< clasificacion.length; j++){
                 if(jugadores[clasificacion[j]] === nombre){
-                    competicionesUsuario.push([competicionActual,j+1]);
+                    competicionesUsuario.push([competicionActual,j+1,oros]);
                     localStorage.removeItem('competicionesUsuario');
                     localStorage.setItem('competicionesUsuario',JSON.stringify(competicionesUsuario));
                 }
