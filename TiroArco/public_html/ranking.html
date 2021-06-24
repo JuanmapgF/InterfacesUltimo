@@ -55,13 +55,14 @@ and open the template in the editor.
             
             for(i=0; i<jugadores.length;i++) {
                 clasificacion.push(puntuaciones.indexOf(puntuaciones_ordenadas[i]));
-                if(i === jugadores.length-1){
-                    competicionesUsuario.push([competicionActual,puntuaciones.indexOf(puntuaciones_ordenadas[i])+1]);
+            }
+            for(j=0; j< clasificacion.length; j++){
+                if(jugadores[clasificacion[j]] === nombre){
+                    competicionesUsuario.push([competicionActual,j+1]);
                     localStorage.removeItem('competicionesUsuario');
                     localStorage.setItem('competicionesUsuario',JSON.stringify(competicionesUsuario));
                 }
             }
-            
             
             
             
