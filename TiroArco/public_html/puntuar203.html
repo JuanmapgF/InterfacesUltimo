@@ -47,10 +47,10 @@ and open the template in the editor.
             let puntuacion = 0;
         </script>
         <style>
-        .hideme
-        {
-            display:none;
-        }
+            .hideme
+            {
+                display:none;
+            }
         </style>
     </head>
     <body class="bg-light bg-gradient">
@@ -97,73 +97,72 @@ and open the template in the editor.
                         <td> <input type="number" class="form-control" id="r1f3" min="0" max="10" maxlength="2" required=""> </td>
                         <td><button id="bt1" onclick="sumar()" >Continuar</button></td>
                     </tr>
-                    
+
                 </tbody>
             </table>
-            <p class="mb-0 lead"> Puntuación: <div class="col-md-1"><input type="number" class="form-control" id="p1" min="0"  max="10" maxlength="2" disabled=""></div> </p>
-            <div class="container text-center">
-                <button id="boton" type="submit" class="btn btn-primary mb-3 hideme" onclick="sumar()"> Guardar puntuación </button>
-            </div>
-        </section>
+            <p class="mb-0 lead">Puntuación: <div class="col-md-1"><input type="number" class="form-control" id="p1" min="0"  max="10" maxlength="2" disabled=""></div></p> 
+        <p class="mb-0 lead">Oros: <div class="col-md-1"><input type="number" class="form-control" id="oro" min="0"  max="10" maxlength="2" disabled=""></div></p>  
 
-        <script>
-            // Si se llama a esto crea la tabla anterior con el <table id="tablaPuntuaciones"> ... </table>
-            document.getElementById('p1').value =puntuacion;
-            document.getElementById('r1').value =ronda;
-            
-            function creatTabla(rondas, flechas) {
-                var table = document.getElementById("tablaPuntuaciones");
-                table.innerHTML += "<thead> <tr> <th> Ronda </th> <th> Flecha 1 </th>  <th> Flecha 2 </th> <th> Flecha 3 </th>  </tr> </thead> <tbody>";
-                for (var r = 1; r <= rondas; r++)
-                {
-                    var fila = "<tr><td>" + r + "</td>";
-                    for (var f = 1; f <= flechas; f++) {
-                        fila += "<td> <input type=\"text\" class=\"form-control\" id=\"r" + r + "f" + f + "\" required=\"\">";
-                    }
-                    table.innerHTML += fila + "<tr> <br/>";
+    <div class="container text-center">
+        <button id="boton" type="submit" class="btn btn-primary mb-3 hideme" onclick="sumar()"> Guardar puntuación </button>
+    </div>
+</section>
+
+<script>
+    // Si se llama a esto crea la tabla anterior con el <table id="tablaPuntuaciones"> ... </table>
+    document.getElementById('p1').value = puntuacion;
+    document.getElementById('r1').value = ronda;
+    //disparos a los circulos amarillos
+    let oro = 0;
+
+    // Pasa por todos los inputs y recoge la puntuación
+    // Hay que guardar las puntuaciones de cada flecha separadas
+    function sumar() {
+        if (ronda <= 20) {
+            for (var f = 1; f <= 3; f++) {
+                var valor = document.getElementById('r1' + 'f' + f).value;
+                if (valor === null || valor === 'X' || valor === 'x') {
+                    valor = 0;
                 }
-                table.innerHTML += "</tbody>";
-            }
-
-            // Pasa por todos los inputs y recoge la puntuación
-            // Hay que guardar las puntuaciones de cada flecha separadas
-            function sumar(){
-                if(ronda<=20){
-                    for (var f = 1; f <= 3; f++) {
-                        var valor = document.getElementById('r1' + 'f' + f).value;
-                        if (valor === null || valor === 'X' || valor === 'x') {
-                            valor = 0;
-                        }
-                    puntuacion += new Number(valor);
-                    }
-                    ronda += 1;
-                    if(ronda > 20){
-                        location.href = 'ranking.html';
-                        localStorage.setItem('puntuacion', puntuacion); 
-                    }
-                    if(ronda+1 >20){
-                        document.getElementById('boton').style.display="inline";
-                        document.getElementById('bt1').style.visibility="hidden";
-                    }
-                    document.getElementById('r1f1').value="";
-                    document.getElementById('r1f2').value="";
-                    document.getElementById('r1f3').value="";
-                    document.getElementById('r1').value =ronda;
-                    document.getElementById('p1').value =puntuacion;   
+                if (valor === '9' || valor === '10') {
+                    oro += 1;
                 }
+                var valorNumerico = new Number(valor);
+                if (valorNumerico > 10) {
+                    valorNumerico = 0;
+                }
+                puntuacion += valorNumerico;
             }
-
-            function calcularPuntuacion(puntuacion) {
-                localStorage.setItem('participarEn', null);
+            ronda += 1;
+            if (ronda > 20) {
                 location.href = 'ranking.html';
                 localStorage.setItem('puntuacion', puntuacion);
+                localStorage.setItem('oros', oro);
             }
+            if (ronda + 1 > 20) {
+                document.getElementById('boton').style.display = "inline";
+                document.getElementById('bt1').style.visibility = "hidden";
+            }
+            document.getElementById('r1f1').value = "";
+            document.getElementById('r1f2').value = "";
+            document.getElementById('r1f3').value = "";
+            document.getElementById('r1').value = ronda;
+            document.getElementById('p1').value = puntuacion;
+            document.getElementById('oro').value = oro;
+        }
+    }
 
-            function cerrar() {
-                localStorage.clear();
-            }
-        </script>        
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" 
-        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-    </body>
+    function calcularPuntuacion(puntuacion) {
+        localStorage.setItem('participarEn', null);
+        location.href = 'ranking.html';
+        localStorage.setItem('puntuacion', puntuacion);
+    }
+
+    function cerrar() {
+        localStorage.clear();
+    }
+</script>        
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</body>
 </html>
