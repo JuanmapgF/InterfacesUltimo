@@ -43,6 +43,9 @@ and open the template in the editor.
                     break;
             }
             titulo.text = competicionActual;
+            let ronda = 1;
+            let puntuacion = 0;
+            
         </script>
         
         <style>
@@ -78,7 +81,7 @@ and open the template in the editor.
                 <hr/>
             </header>
 
-            <div>Apuntar puntuación de cada disparo</div>
+            <div>Apuntar puntuación de cada disparo:</div>
 
             <table class="table table-striped center scroll" id="tablaPuntuaciones" cellpadding="6" border="2" align="center">
                 <thead> 
@@ -95,134 +98,29 @@ and open the template in the editor.
                 </thead> 
                 <tbody>
                     <tr>
-                        <td>1</td>
+                        <td> <input type="number" class="form-control" id="r1" min="0" max="10" maxlength="2" disabled=""></td>
                         <td> <input type="number" class="form-control" id="r1f1" min="0" max="10" maxlength="2" required=""> </td>
                         <td> <input type="number" class="form-control" id="r1f2" min="0" max="10" maxlength="2" required=""> </td>
                         <td> <input type="number" class="form-control" id="r1f3" min="0" max="10" maxlength="2" required=""> </td>
                         <td> <input type="number" class="form-control" id="r1f4" min="0" max="10" maxlength="2" required=""> </td>
                         <td> <input type="number" class="form-control" id="r1f5" min="0" max="10" maxlength="2" required=""> </td>
                         <td> <input type="number" class="form-control" id="r1f6" min="0" max="10" maxlength="2" required=""> </td>
-                        <td><button id="bt1" onclick="mostrar('r2','r2f1','r2f2','r2f3','r2f4','r2f5','r2f6','bt2')" >Continuar</button></td>
-                    </tr>
-                    <tr>
-                        <td id="r2" class="hideme">2</td>
-                        <td> <input type="number" class="form-control hideme" id="r2f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r2f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r2f3" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r2f4" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r2f5" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r2f6" min="0" max="10" maxlength="2" required=""> </td>
-                        <td><button id="bt2" class="hideme" onclick="mostrar('r3','r3f1','r3f2','r3f3','r3f4','r3f5','r3f6','bt3')" >Continuar</button></td>
-                    </tr>
-                    <tr>
-                        <td id="r3" class="hideme">3</td>
-                        <td> <input type="number" class="form-control hideme" id="r3f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r3f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r3f3" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r3f4" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r3f5" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r3f6" min="0" max="10" maxlength="2" required=""> </td>
-                        <td><button id="bt3" class="hideme" onclick="mostrar('r4','r4f1','r4f2','r4f3','r4f4','r4f5','r4f6','bt4')" >Continuar</button></td>
-                    </tr>
-                    <tr>
-                        <td id="r4" class="hideme">4</td>
-                        <td> <input type="number" class="form-control hideme" id="r4f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r4f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r4f3" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r4f4" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r4f5" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r4f6" min="0" max="10" maxlength="2" required=""> </td>
-                        <td><button id="bt4" class="hideme" onclick="mostrar('r5','r5f1','r5f2','r5f3','r5f4','r5f5','r5f6','bt5')" >Continuar</button></td>
-                    </tr>
-                    <tr>
-                        <td id="r5" class="hideme">5</td>
-                        <td> <input type="number" class="form-control hideme" id="r5f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r5f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r5f3" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r5f4" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r5f5" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r5f6" min="0" max="10" maxlength="2" required=""> </td>
-                        <td><button id="bt5" class="hideme" onclick="mostrar('r6','r6f1','r6f2','r6f3','r6f4','r6f5','r6f6','bt6')" >Continuar</button></td>
-                    </tr>
-                    <tr>
-                        <td id="r6" class="hideme">6</td>
-                        <td> <input type="number" class="form-control hideme" id="r6f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r6f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r6f3" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r6f4" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r6f5" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r6f6" min="0" max="10" maxlength="2" required=""> </td>
-                        <td><button id="bt6" class="hideme" onclick="mostrar('r7','r7f1','r7f2','r7f3','r7f4','r7f5','r7f6','bt7')" >Continuar</button></td>
-                    </tr>
-                    <tr>
-                        <td id="r7" class="hideme">7</td>
-                        <td> <input type="number" class="form-control hideme" id="r7f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r7f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r7f3" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r7f4" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r7f5" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r7f6" min="0" max="10" maxlength="2" required=""> </td>
-                        <td><button id="bt7" class="hideme" onclick="mostrar('r8','r8f1','r8f2','r8f3','r8f4','r8f5','r8f6','bt8')" >Continuar</button></td>
-                    </tr>
-                    <tr>
-                        <td id="r8" class="hideme">8</td>
-                        <td> <input type="number" class="form-control hideme" id="r8f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r8f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r8f3" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r8f4" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r8f5" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r8f6" min="0" max="10" maxlength="2" required=""> </td>
-                        <td><button id="bt8" class="hideme" onclick="mostrar('r9','r9f1','r9f2','r9f3','r9f4','r9f5','r9f6','bt9')" >Continuar</button></td>
-                    </tr>
-                    <tr>
-                        <td id="r9" class="hideme">9</td>
-                        <td> <input type="number" class="form-control hideme" id="r9f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r9f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r9f3" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r9f4" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r9f5" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r9f6" min="0" max="10" maxlength="2" required=""> </td>
-                        <td><button id="bt9" class="hideme" onclick="mostrar('r10','r10f1','r10f2','r10f3','r10f4','r10f5','r10f6','bt10')" >Continuar</button></td>
-                    </tr>
-                    <tr>
-                        <td id="r10" class="hideme">10</td>
-                        <td> <input type="number" class="form-control hideme" id="r10f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r10f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r10f3" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r10f4" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r10f5" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r10f6" min="0" max="10" maxlength="2" required=""> </td>
-                        <td><button id="bt10" class="hideme" onclick="mostrar('r11','r11f1','r11f2','r11f3','r11f4','r11f5','r11f6','bt11')" >Continuar</button></td>
-                    </tr>
-                    <tr>
-                        <td id="r11" class="hideme">11</td>
-                        <td> <input type="number" class="form-control hideme" id="r11f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r11f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r11f3" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r11f4" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r11f5" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r11f6" min="0" max="10" maxlength="2" required=""> </td>
-                        <td><button id="bt11" class="hideme" onclick="mostrar('r12','r12f1','r12f2','r12f3','r12f4','r12f5','r12f6','bt12')" >Continuar</button></td>
-                    </tr>
-                    <tr>
-                        <td id="r12" class="hideme">12</td>
-                        <td> <input type="number" class="form-control hideme" id="r12f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r12f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r12f3" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r12f4" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r12f5" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control hideme" id="r12f6" min="0" max="10" maxlength="2" required=""> </td>
-                    </tr>
+                        <td><button id="bt1" onclick="sumar()" >Continuar</button></td>
+                    
                     
                 </tbody>
             </table>
+            <p class="mb-0 lead"> Puntuación: <div class="col-md-1"><input type="number" class="form-control" id="p1" min="0"  max="10" maxlength="2" disabled=""></div> </p>
             <div class="container text-center">
-                <button id="bt12" type="submit" class="btn btn-primary mb-3 hideme" onclick="guardarPuntuacion(12, 6)"> Guardar puntuación </button>
+                <button id="boton" type="submit" class="btn btn-primary mb-3 hideme" onclick="sumar()"> Guardar puntuación </button>
             </div>
         </section>
 
         <script>
             // Si se llama a esto crea la tabla anterior con el <table id="tablaPuntuaciones"> ... </table>
+            document.getElementById('p1').value =puntuacion;
+            document.getElementById('r1').value =ronda;
+            
             function creatTabla(rondas, flechas) {
                 var table = document.getElementById("tablaPuntuaciones");
                 table.innerHTML += "<thead> <tr> <th> Ronda </th> <th> Flecha 1 </th>  <th> Flecha 2 </th> <th> Flecha 3 </th> <th> Flecha 4 </th> <th> Flecha 5 </th> <th> Flecha 6 </th> </tr> </thead> <tbody>";
@@ -239,21 +137,36 @@ and open the template in the editor.
 
             // Pasa por todos los inputs y recoge la puntuación
             // Hay que guardar las puntuaciones de cada flecha separadas
-            function guardarPuntuacion(rondas, flechas) { 
-                var puntuacion = new Number('0');
-                for (var r = 1; r <= rondas; r++)
-                {
-                    for (var f = 1; f <= flechas; f++) {
-                        var valor = document.getElementById('r' + r + 'f' + f).value;
+
+            function sumar(){
+                if(ronda<=12){
+                    for (var f = 1; f <= 6; f++) {
+                        var valor = document.getElementById('r1' + 'f' + f).value;
                         if (valor === null || valor === 'X' || valor === 'x') {
                             valor = 0;
                         }
-                        puntuacion += new Number(valor);
+                    puntuacion += new Number(valor);
                     }
+                    ronda += 1;
+                    if(ronda > 12){
+                        location.href = 'ranking.html';
+                        localStorage.setItem('puntuacion', puntuacion); 
+                    }
+                    if(ronda+1 >12){
+                        document.getElementById('boton').style.display="inline";
+                        document.getElementById('bt1').style.visibility="hidden";
+                    }
+                    document.getElementById('r1f1').value="";
+                    document.getElementById('r1f2').value="";
+                    document.getElementById('r1f3').value="";
+                    document.getElementById('r1f4').value="";
+                    document.getElementById('r1f5').value="";
+                    document.getElementById('r1f6').value="";
+                    document.getElementById('r1').value =ronda;
+                    document.getElementById('p1').value =puntuacion;   
                 }
-                location.href = 'ranking.html';
-                localStorage.setItem('puntuacion', puntuacion);  
             }
+            
 
             function calcularPuntuacion(puntuacion) {
                 localStorage.setItem('participarEn', null);

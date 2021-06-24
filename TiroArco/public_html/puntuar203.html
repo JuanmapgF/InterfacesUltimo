@@ -43,7 +43,15 @@ and open the template in the editor.
                     break;
             }
             titulo.text = competicionActual;
+            let ronda = 1;
+            let puntuacion = 0;
         </script>
+        <style>
+        .hideme
+        {
+            display:none;
+        }
+        </style>
     </head>
     <body class="bg-light bg-gradient">
 
@@ -69,7 +77,7 @@ and open the template in the editor.
                 <hr/>
             </header>
 
-            <div>Apuntar puntuación de cada disparo</div>
+            <div>Apuntar puntuación de cada disparo:</div>
 
             <table class="table table-striped center scroll" id="tablaPuntuaciones" cellpadding="6" border="2" align="center">
                 <thead> 
@@ -77,138 +85,32 @@ and open the template in the editor.
                         <th> Ronda </th> 
                         <th> Flecha 1 </th>  
                         <th> Flecha 2 </th> 
-                        <th> Flecha 3 </th>  </tr> 
+                        <th> Flecha 3 </th>
+                        <th></th>
+                    </tr> 
                 </thead> 
                 <tbody>
                     <tr>
-                        <td>1</td>
+                        <td> <input type="number" class="form-control" id="r1" min="0" max="10" maxlength="2" disabled=""></td>
                         <td> <input type="number" class="form-control" id="r1f1" min="0" max="10" maxlength="2" required=""> </td>
                         <td> <input type="number" class="form-control" id="r1f2" min="0" max="10" maxlength="2" required=""> </td>
                         <td> <input type="number" class="form-control" id="r1f3" min="0" max="10" maxlength="2" required=""> </td>
+                        <td><button id="bt1" onclick="sumar()" >Continuar</button></td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td> <input type="number" class="form-control" id="r2f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r2f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r2f3" min="0" max="10" maxlength="2" required=""> </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td> <input type="number" class="form-control" id="r3f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r3f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r3f3" min="0" max="10" maxlength="2" required=""> </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td> <input type="number" class="form-control" id="r4f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r4f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r4f3" min="0" max="10" maxlength="2" required=""> </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td> <input type="number" class="form-control" id="r5f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r5f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r5f3" min="0" max="10" maxlength="2" required=""> </td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td> <input type="number" class="form-control" id="r6f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r6f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r6f3" min="0" max="10" maxlength="2" required=""> </td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td> <input type="number" class="form-control" id="r7f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r7f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r7f3" min="0" max="10" maxlength="2" required=""> </td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td> <input type="number" class="form-control" id="r8f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r8f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r8f3" min="0" max="10" maxlength="2" required=""> </td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td> <input type="number" class="form-control" id="r9f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r9f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r9f3" min="0" max="10" maxlength="2" required=""> </td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td> <input type="number" class="form-control" id="r10f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r10f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r10f3" min="0" max="10" maxlength="2" required=""> </td>
-                    </tr>
-                    <tr>
-                        <td>11</td>
-                        <td> <input type="number" class="form-control" id="r11f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r11f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r11f3" min="0" max="10" maxlength="2" required=""> </td>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td> <input type="number" class="form-control" id="r12f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r12f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r12f3" min="0" max="10" maxlength="2" required=""> </td>
-                    </tr>
-                    <tr>
-                        <td>13</td>
-                        <td> <input type="number" class="form-control" id="r13f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r13f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r13f3" min="0" max="10" maxlength="2" required=""> </td>
-                    </tr>
-                    <tr>
-                        <td>14</td>
-                        <td> <input type="number" class="form-control" id="r14f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r14f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r14f3" min="0" max="10" maxlength="2" required=""> </td>
-                    </tr>
-                    <tr>
-                        <td>15</td>
-                        <td> <input type="number" class="form-control" id="r15f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r15f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r15f3" min="0" max="10" maxlength="2" required=""> </td>
-                    </tr>
-                    <tr>
-                        <td>16</td>
-                        <td> <input type="number" class="form-control" id="r16f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r16f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r16f3" min="0" max="10" maxlength="2" required=""> </td>
-                    </tr>
-                    <tr>
-                        <td>17</td>
-                        <td> <input type="number" class="form-control" id="r17f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r17f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r17f3" min="0" max="10" maxlength="2" required=""> </td>
-                    </tr>
-                    <tr>
-                        <td>18</td>
-                        <td> <input type="number" class="form-control" id="r18f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r18f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r18f3" min="0" max="10" maxlength="2" required=""> </td>
-                    </tr>
-                    <tr>
-                        <td>19</td>
-                        <td> <input type="number" class="form-control" id="r19f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r19f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r19f3" min="0" max="10" maxlength="2" required=""> </td>
-                    </tr>
-                    <tr>
-                        <td>20</td>
-                        <td> <input type="number" class="form-control" id="r20f1" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r20f2" min="0" max="10" maxlength="2" required=""> </td>
-                        <td> <input type="number" class="form-control" id="r20f3" min="0" max="10" maxlength="2" required=""> </td>
-                    </tr>
+                    
                 </tbody>
             </table>
+            <p class="mb-0 lead"> Puntuación: <div class="col-md-1"><input type="number" class="form-control" id="p1" min="0"  max="10" maxlength="2" disabled=""></div> </p>
             <div class="container text-center">
-                <button type="submit" class="btn btn-primary mb-3" onclick="guardarPuntuacion(20, 3)"> Guardar puntuación </button>
+                <button id="boton" type="submit" class="btn btn-primary mb-3 hideme" onclick="sumar()"> Guardar puntuación </button>
             </div>
         </section>
 
         <script>
             // Si se llama a esto crea la tabla anterior con el <table id="tablaPuntuaciones"> ... </table>
+            document.getElementById('p1').value =puntuacion;
+            document.getElementById('r1').value =ronda;
+            
             function creatTabla(rondas, flechas) {
                 var table = document.getElementById("tablaPuntuaciones");
                 table.innerHTML += "<thead> <tr> <th> Ronda </th> <th> Flecha 1 </th>  <th> Flecha 2 </th> <th> Flecha 3 </th>  </tr> </thead> <tbody>";
@@ -225,21 +127,30 @@ and open the template in the editor.
 
             // Pasa por todos los inputs y recoge la puntuación
             // Hay que guardar las puntuaciones de cada flecha separadas
-            function guardarPuntuacion(rondas, flechas) { 
-                var puntuacion = new Number('0');
-                for (var r = 1; r <= rondas; r++)
-                {
-                    for (var f = 1; f <= flechas; f++) {
-                        var valor = document.getElementById('r' + r + 'f' + f).value;
+            function sumar(){
+                if(ronda<=20){
+                    for (var f = 1; f <= 3; f++) {
+                        var valor = document.getElementById('r1' + 'f' + f).value;
                         if (valor === null || valor === 'X' || valor === 'x') {
                             valor = 0;
                         }
-                        puntuacion += new Number(valor);
+                    puntuacion += new Number(valor);
                     }
+                    ronda += 1;
+                    if(ronda > 20){
+                        location.href = 'ranking.html';
+                        localStorage.setItem('puntuacion', puntuacion); 
+                    }
+                    if(ronda+1 >20){
+                        document.getElementById('boton').style.display="inline";
+                        document.getElementById('bt1').style.visibility="hidden";
+                    }
+                    document.getElementById('r1f1').value="";
+                    document.getElementById('r1f2').value="";
+                    document.getElementById('r1f3').value="";
+                    document.getElementById('r1').value =ronda;
+                    document.getElementById('p1').value =puntuacion;   
                 }
-                location.href = 'ranking.html';
-                localStorage.setItem('puntuacion', puntuacion);
-                
             }
 
             function calcularPuntuacion(puntuacion) {
