@@ -45,7 +45,15 @@ and open the template in the editor.
             titulo.text = competicionActual;
             let ronda = 1;
             let puntuacion = 0;
-
+            let oro = 0;
+            var playSound = (function beep() {
+                var snd = new Audio("data:audio/wav;base64,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qJrx4KOQjahZxWbcZgztj2c49nKmkId44S71j0c8eV9yDK6uPRzx5X18eDvjvQ6yKo9ZSS6l//8elePK/Lf//IInrOF/FvDoADYAGBMGb7FtErm5MXMlmPAJQVgWta7Zx2go+8xJ0UiCb8LHHdftWyLJE0QIAIsI+UbXu67dZMjmgDGCGl1H+vpF4NSDckSIkk7Vd+sxEhBQMRU8j/12UIRhzSaUdQ+rQU5kGeFxm+hb1oh6pWWmv3uvmReDl0UnvtapVaIzo1jZbf/pD6ElLqSX+rUmOQNpJFa/r+sa4e/pBlAABoAAAAA3CUgShLdGIxsY7AUABPRrgCABdDuQ5GC7DqPQCgbbJUAoRSUj+NIEig0YfyWUho1VBBBA//uQZB4ABZx5zfMakeAAAAmwAAAAF5F3P0w9GtAAACfAAAAAwLhMDmAYWMgVEG1U0FIGCBgXBXAtfMH10000EEEEEECUBYln03TTTdNBDZopopYvrTTdNa325mImNg3TTPV9q3pmY0xoO6bv3r00y+IDGid/9aaaZTGMuj9mpu9Mpio1dXrr5HERTZSmqU36A3CumzN/9Robv/Xx4v9ijkSRSNLQhAWumap82WRSBUqXStV/YcS+XVLnSS+WLDroqArFkMEsAS+eWmrUzrO0oEmE40RlMZ5+ODIkAyKAGUwZ3mVKmcamcJnMW26MRPgUw6j+LkhyHGVGYjSUUKNpuJUQoOIAyDvEyG8S5yfK6dhZc0Tx1KI/gviKL6qvvFs1+bWtaz58uUNnryq6kt5RzOCkPWlVqVX2a/EEBUdU1KrXLf40GoiiFXK///qpoiDXrOgqDR38JB0bw7SoL+ZB9o1RCkQjQ2CBYZKd/+VJxZRRZlqSkKiws0WFxUyCwsKiMy7hUVFhIaCrNQsKkTIsLivwKKigsj8XYlwt/WKi2N4d//uQRCSAAjURNIHpMZBGYiaQPSYyAAABLAAAAAAAACWAAAAApUF/Mg+0aohSIRobBAsMlO//Kk4soosy1JSFRYWaLC4qZBYWFRGZdwqKiwkNBVmoWFSJkWFxX4FFRQWR+LsS4W/rFRb/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////VEFHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAU291bmRib3kuZGUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMjAwNGh0dHA6Ly93d3cuc291bmRib3kuZGUAAAAAAAAAACU=");  
+                return function() {     
+                    snd.play(); 
+                }
+            })();
+            
+            
         </script>
 
         <style>
@@ -53,11 +61,21 @@ and open the template in the editor.
             {
                 display:none;
             }
+            .crono_wrapper {
+                text-align:center;
+                width:200px;
+            }
+            #p1 {
+                width: 1500%;
+            }
+            #oro {
+                width: 1500%;
+            }
         </style>
 
 
     </head>
-    <body class="bg-light bg-gradient">
+    <body class="bg-light bg-gradient" onload="cronometro();">
 
         <nav class="mt-3">
             <ul class="nav justify-content-center">
@@ -110,40 +128,45 @@ and open the template in the editor.
 
                 </tbody>
             </table>
-            <p class="mb-0 lead">Puntuación: <div class="col-md-1"><input type="number" class="form-control" id="p1" min="0"  max="10" maxlength="2" disabled=""></div></p>  
-        <p class="mb-0 lead">Oros: <div class="col-md-1"><input type="number" class="form-control" id="oro" min="0"  max="10" maxlength="2" disabled=""></div></p>  
+            <div class="row"> 
+                <div class="col-md-auto">
+                    <p class="mb-0 lead">Puntuación: <div class="col-md-1"><input type="number" class="form-control" id="p1" min="0"  max="10" maxlength="2" disabled=""></div></p> 
+                    <p class="mb-0 lead">Oros: <div class="col-md-1"><input type="number" class="form-control" id="oro" min="0"  max="10" maxlength="2" disabled=""></div></p>  
+                </div>
 
-    <div class="container text-center">
-        <button id="boton" type="submit" class="btn btn-primary mb-3 hideme" onclick="sumar()"> Guardar puntuación </button>
-    </div>
+                
+                <div class="col-md-auto mb-0 lead crono_wrapper mx-auto" style="width: 400px;" id="crono-sis">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-stopwatch" viewBox="0 0 16 16"  style="display: inline; margin-bottom: 58px;">
+                        <path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5V5.6z"/>
+                        <path d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z"/>
+                    </svg>
+                    <h2 id='crono'  style="display: inline; padding-left: 10px; font-size: 100px;">03:00</h2>
+                </div>
+
+
+                <div class="container text-center">
+                    <button id="boton" type="submit" class="btn btn-primary mb-3 hideme" onclick="sumar()"> Guardar puntuación </button>
+                </div>
+            </div>
 </section>
 
 <script>
     // Si se llama a esto crea la tabla anterior con el <table id="tablaPuntuaciones"> ... </table>
+    var minutos = 3;
+    var segundos = 1;
+    var crono = true;
     document.getElementById('p1').value = puntuacion;
     document.getElementById('r1').value = ronda;
+    document.getElementById('oro').value = oro;
     //disparos a los circulos amarillos
-    let oro = 0;
-
-    function creatTabla(rondas, flechas) {
-        var table = document.getElementById("tablaPuntuaciones");
-        table.innerHTML += "<thead> <tr> <th> Ronda </th> <th> Flecha 1 </th>  <th> Flecha 2 </th> <th> Flecha 3 </th> <th> Flecha 4 </th> <th> Flecha 5 </th> <th> Flecha 6 </th> </tr> </thead> <tbody>";
-        for (var r = 1; r <= rondas; r++)
-        {
-            var fila = "<tr><td>" + r + "</td>";
-            for (var f = 1; f <= flechas; f++) {
-                fila += "<td> <input type=\"text\" class=\"form-control\" id=\"r" + r + "f" + f + "\" required=\"\">";
-            }
-            table.innerHTML += fila + "<tr> <br/>";
-        }
-        table.innerHTML += "</tbody>";
-    }
 
     // Pasa por todos los inputs y recoge la puntuación
     // Hay que guardar las puntuaciones de cada flecha separadas
 
     function sumar() {
         if (ronda <= 12) {
+            minutos = 3;
+            segundos = 1;
             for (var f = 1; f <= 6; f++) {
                 var valor = document.getElementById('r1' + 'f' + f).value;
                 if (valor === null || valor === 'X' || valor === 'x') {
@@ -179,6 +202,8 @@ and open the template in the editor.
             document.getElementById('r1').value = ronda;
             document.getElementById('p1').value = puntuacion;
             document.getElementById('oro').value = oro;
+        } else {
+            crono = false;
         }
     }
 
@@ -196,21 +221,60 @@ and open the template in the editor.
         localStorage.setItem('puntuacion', puntuacion);
 
     }
+    
+    // Pone el fondo del crono de color rojo, espera medio segundo y llama a apagarAvisoTiempo()
+    async function encenderAvisoTiempo() {
+        document.getElementById('crono').style.backgroundColor = 'red';
+        timeoutEncendido = setTimeout("apagarAvisoTiempo()", 500);
+    }
 
+    // Pone el fondo del crono de transparente, espera medio segundo y llama a encenderAvisoTiempo()
+    async function apagarAvisoTiempo() {
+        document.getElementById('crono').style.backgroundColor = 'initial';
+    }
+
+    async function cronometro() {
+        if (crono) {
+            if (segundos === 0) {
+                segundos = 59;
+                if (minutos === 0 && ronda <= 20) {
+                    alert("Se ha acabado el tiempo y dará comienzo a la siguiente ronda");
+                    apagarAvisoTiempo();
+                    sumar();
+                } else {
+                    minutos--;
+                }
+            } else {
+                segundos--;
+                if (minutos === 0 && segundos <= 30) {
+                    // Cuando queda poco tiempo activamos el aviso visual
+                    encenderAvisoTiempo();
+                }
+
+                // Se avisa con un sonido cuando quedan 30, 20 y 10 segundos
+
+                if (minutos === 0 && segundos === 30) {
+                    playSound();
+                } else if (minutos === 0 && segundos === 20) {
+                    playSound();
+                } else if (minutos === 0 && segundos === 10) {
+                    playSound();
+                }
+            }
+
+            var result = (minutos < 10 ? "0" : "") + minutos + ":" + (segundos < 10 ? "0" : "") + segundos;
+
+            document.getElementById('crono').innerHTML = result;
+
+            // Se vuelve a ejecutar la función en 1 segundo
+            timeout = setTimeout("cronometro()", 1000);
+        }
+    }
+    
     function cerrar() {
         localStorage.clear();
     }
 
-    function mostrar(r, r1, r2, r3, r4, r5, r6, bt) {
-        document.getElementById(r).style.display = 'inline';
-        document.getElementById(r1).style.display = 'inline';
-        document.getElementById(r2).style.display = 'inline';
-        document.getElementById(r3).style.display = 'inline';
-        document.getElementById(r4).style.display = 'inline';
-        document.getElementById(r5).style.display = 'inline';
-        document.getElementById(r6).style.display = 'inline';
-        document.getElementById(bt).style.display = 'inline';
-    }
 
 
 </script>        
