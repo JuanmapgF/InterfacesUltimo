@@ -58,8 +58,12 @@ and open the template in the editor.
                 <thead class="table-primary">
                     <tr>
                         <th>Competición</th>
+                        <th>Divisón</th>
+                        <th>Modalidad</th>
+                        <th>Rondas/Flechas</th>
                         <th>Posición</th>
                         <th>Oros</th>
+                        <th>Puntuacion</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -68,6 +72,15 @@ and open the template in the editor.
                         document.write("<tr>");
                         document.write("<td>");
                         document.write(competicionesUsuario[i][0]);
+                        document.write("</td>");
+                        document.write("<td>");
+                        document.write(competicionesUsuario[i][4]);
+                        document.write("</td>");
+                        document.write("<td>");
+                        document.write(competicionesUsuario[i][5]);
+                        document.write("</td>");
+                        document.write("<td>");
+                        document.write(competicionesUsuario[i][6]);
                         document.write("</td>");
                         document.write("<td>");
                         document.write(competicionesUsuario[i][1]);
@@ -80,6 +93,9 @@ and open the template in the editor.
                         document.write("</td>");
                         document.write("<td>");
                         document.write(competicionesUsuario[i][2]);
+                        document.write("</td>");
+                        document.write("<td>");
+                        document.write(competicionesUsuario[i][3]);
                         document.write("</td>");
                         document.write("</tr>");
                     }
